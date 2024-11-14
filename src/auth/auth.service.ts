@@ -28,7 +28,7 @@ export class AuthService extends PrismaClient implements OnModuleInit {
 
   async verifyToken(token: string) {
     try {
-      
+
       const { sub, iat, exp, ...user } = this.jwtService.verify(token, {
         secret: envs.jwtSecret,
       });
@@ -68,7 +68,7 @@ export class AuthService extends PrismaClient implements OnModuleInit {
       const newUser = await this.user.create({
         data: {
           email: email,
-          password: bcrypt.hashSync(password, 10), // TODO: encriptar / hash
+          password: bcrypt.hashSync(password, 10),
           name: name,
         },
       });
